@@ -34,7 +34,7 @@ package entities
 				drag = new AxVector(0, 0);
 			} else if (Ax.keys.down(AxKey.DOWN)) {
 				acceleration = new AxVector(0, 0);
-				drag = new AxVector(velocity.x, velocity.y);
+				drag = new AxVector(Math.abs(velocity.x), Math.abs(velocity.y));
 			}
 			else {
 				acceleration = new AxVector(0, 0);
