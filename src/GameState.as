@@ -40,7 +40,10 @@ package
 		
 		public function hudUpdate():void
 		{
-			_hud.text = "Velocity: " + Math.floor(Math.sqrt((Registry.player.velocity.x * Registry.player.velocity.x) + (Registry.player.velocity.y * Registry.player.velocity.y))) + "m/s \nAngle: " + (Registry.player.angle % 360 + 360) % 360;
+			var a:Number = Registry.player.angle;
+			var vx:int = Registry.player.velocity.x;
+			var vy:int = Registry.player.velocity.y;
+			_hud.text = "Velocity: " + Math.floor(Math.sqrt(Math.pow(vx, 2) + Math.pow(vy, 2))) + "m/s \nAngle: " + Math.floor((a % 360 + 360) % 360) + "\nVectorAngle: " + Math.floor((((Math.atan2(vy, vx)) * 180 / Math.PI) % 360 + 360) % 360);
 			_hud.x = Registry.player.x + Registry.player.width + 10;
 			_hud.y = Registry.player.y;
 		}
