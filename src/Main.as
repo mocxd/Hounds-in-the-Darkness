@@ -1,5 +1,6 @@
 package 
 {
+	import flash.system.Capabilities;
 	import org.axgl.Ax;
 	
 	/**
@@ -11,7 +12,7 @@ package
 		
 		public function Main():void 
 		{
-			super(GameState, 400, 300, 1, 60);
+			super(GameState, Capabilities.screenResolutionX, Capabilities.screenResolutionY, 1, 60);
 		}
 		
 	}

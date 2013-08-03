@@ -12,7 +12,7 @@ package entities
 		
 		public function Player() 
 		{
-			super(Ax.width / 2, Ax.height / 2, Registry.SPR_player, 21, 21);
+			super(Ax.width / 2, Ax.height / 2, Registry.SPR_player, 7, 7);
 			angle -= 90;
 			
 		}
@@ -38,7 +38,8 @@ package entities
 			}
 			else {
 				acceleration = new AxVector(0, 0);
-				drag = new AxVector(100, 100);
+				if (Math.abs(velocity.x) + Math.abs(velocity.y) > 10) drag = new AxVector(0, 0);
+				else drag = new AxVector(100, 100);
 			}
 		}
 		

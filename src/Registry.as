@@ -1,5 +1,6 @@
 package  
 {
+	import entities.Player;
 	/**
 	 * This Registry file is set up for 
 	 * easy embedding of project assets.
@@ -27,7 +28,7 @@ package
 		 */
 		
 		 //VARIABLES - public static var <>:<>;
-		
+		public static var player:Player;
 		
 		public function Registry() 
 		{
