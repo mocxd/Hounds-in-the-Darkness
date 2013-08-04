@@ -2,6 +2,7 @@ package entities
 {
 	import org.axgl.*;
 	import org.axgl.input.*;
+	import utils.VMath;
 	/**
 	 * ...
 	 * @author x01010111
@@ -28,6 +29,7 @@ package entities
 		{
 			if (Ax.keys.down(AxKey.LEFT)) angle -= 5;
 			if (Ax.keys.down(AxKey.RIGHT)) angle += 5;
+			
 			if (Ax.keys.down(AxKey.UP)) {
 				acceleration.y += Math.sin(angle * (Math.PI / 180)) * _speed;
 				acceleration.x += Math.cos(angle * (Math.PI / 180)) * _speed;
@@ -38,7 +40,7 @@ package entities
 			}
 			else {
 				acceleration = new AxVector(0, 0);
-				if (Math.abs(velocity.x) + Math.abs(velocity.y) > 10) drag = new AxVector(0, 0);
+				if (VMath.vectorVelocity(velocity.x, velocity.y) > 1 ) drag = new AxVector(0, 0);
 				else drag = new AxVector(100, 100);
 			}
 		}

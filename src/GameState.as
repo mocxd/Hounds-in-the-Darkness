@@ -1,6 +1,7 @@
 package  
 {
 	import entities.Player;
+	import utils.VMath;
 	import org.axgl.*;
 	import org.axgl.render.AxColor;
 	import org.axgl.text.AxText;
@@ -26,7 +27,7 @@ package
 			add(Registry.player);
 			
 			//Add basic HUD - will prob. need its own Class later
-			_hud = new AxText(Ax.width - 100, Ax.height - 24, null, "Velocity", 100, "left");
+			_hud = new AxText(Ax.width - 100, Ax.height - 36, null, "Velocity", 100, "left");
 			_hud.alpha = 0.5
 			add(_hud);
 		}
@@ -40,13 +41,11 @@ package
 		
 		public function hudUpdate():void
 		{
-			var a:Number = Registry.player.angle;
-			var vx:int = Registry.player.velocity.x;
-			var vy:int = Registry.player.velocity.y;
-			_hud.text = "Velocity: " + Math.floor(Math.sqrt(Math.pow(vx, 2) + Math.pow(vy, 2))) + "m/s \nAngle: " + Math.floor((a % 360 + 360) % 360) + "\nVectorAngle: " + Math.floor((((Math.atan2(vy, vx)) * 180 / Math.PI) % 360 + 360) % 360);
-			_hud.x = Registry.player.x + Registry.player.width + 10;
-			_hud.y = Registry.player.y;
+			_hud.text = "Velocity: " + VMath.vectorVelocity(Registry.player.velocity.x, Registry.player.velocity.y) + "m/s";
+			_hud.text += "\nAngle: " + VMath.toRelAngle(Registry.player.angle);
+			_hud.text += "\nVectorAngle: " + VMath.toRelAngle((Math.atan2(Registry.player.velocity.y, Registry.player.velocity.x)) * 180 / Math.PI);
 		}
+		
 	}
 
 }
