@@ -2,7 +2,9 @@ package
 {
 	import entities.Player;
 	import org.axgl.AxGroup;
+	import org.axgl.AxSprite;
 	import org.axgl.text.AxText;
+	import utils.Hud;
 	/**
 	 * This Registry file is set up for 
 	 * easy embedding of project assets.
@@ -24,6 +26,7 @@ package
 		[Embed(source = "../assets/graphics/enemy.png")] public static var SPR_enemy:Class;
 		[Embed(source = "../assets/graphics/enemy2.png")] public static var SPR_enemy2:Class;
 		[Embed(source = "../assets/graphics/bullet.png")] public static var SPR_bullet:Class;
+		[Embed(source = "../assets/graphics/exhaust.png")] public static var PRT_exhaust:Class;
 		
 		//CSV MAPS - [Embed(source = "../assets/maps/<>.csv", mimeType = "application/octet-stream")] public static var <>:Class;
 		
@@ -38,6 +41,7 @@ package
 		public static var enemyGroup:AxGroup;
 		public static var bulletGroup:AxGroup;
 		public static var debugInfo:AxText;
+		public static var hud:Hud;
 		
 		public function Registry() 
 		{

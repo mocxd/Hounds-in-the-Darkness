@@ -2,6 +2,7 @@ package
 {
 	import entities.Player;
 	import entities.Enemy;
+	import utils.Hud;
 	import utils.VMath;
 	import org.axgl.*;
 	import org.axgl.render.AxColor;
@@ -50,24 +51,14 @@ package
 			Registry.debugInfo.color = new AxColor(1, 0, 0);
 			add(Registry.debugInfo);
 			
-			//Add basic HUD - will prob. need its own Class later
-			_hud = new AxText(Ax.width - 100, Ax.height - 36, null, "Velocity", 100, "left");
-			_hud.alpha = 0.5;
-			add(_hud);
+			// HUD
+			Registry.hud = new Hud();
+			add(Registry.hud);
 		}
 		
 		override public function update():void
 		{
-			hudUpdate();
-			
 			super.update();
-		}
-		
-		public function hudUpdate():void
-		{
-			_hud.text = "Velocity: " + VMath.vectorVelocity(Registry.player.velocity.x, Registry.player.velocity.y) + "m/s";
-			_hud.text += "\nAngle: " + VMath.toRelAngle(Registry.player.angle);
-			_hud.text += "\nVectorAngle: " + VMath.toRelAngle((Math.atan2(Registry.player.velocity.y, Registry.player.velocity.x)) * 180 / Math.PI);
 		}
 		
 	}
