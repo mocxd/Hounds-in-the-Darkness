@@ -1,5 +1,6 @@
 package  
 {
+	import entities.particles.*;
 	import entities.Player;
 	import entities.Enemy;
 	import utils.Hud;
@@ -23,6 +24,10 @@ package
 			
 			//Background is already Black, but for quick access:
 			Ax.background = new AxColor(0, 0, 0);
+			
+			//Adds Exhaust under sprites
+			Registry.exhaust = new ParticleManager(Exhaust, 128);
+			add(Registry.exhaust);
 			
 			//Add Player from Registry
 			Registry.player = new Player();

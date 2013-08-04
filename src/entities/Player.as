@@ -34,6 +34,7 @@ package entities
 				acceleration.y += Math.sin(angle * (Math.PI / 180)) * _speed;
 				acceleration.x += Math.cos(angle * (Math.PI / 180)) * _speed;
 				drag = new AxVector(0, 0);
+				Registry.exhaust.fireExhaust(new AxPoint(this.x + width / 2, this.y + height / 2), angle, velocity.x, velocity.y);
 			} else if (Ax.keys.down(AxKey.DOWN)) {
 				acceleration = new AxVector(0, 0);
 				drag = new AxVector(Math.abs(velocity.x), Math.abs(velocity.y));

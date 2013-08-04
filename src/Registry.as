@@ -1,5 +1,6 @@
 package  
 {
+	import entities.particles.*;
 	import entities.Player;
 	import org.axgl.AxGroup;
 	import org.axgl.AxSprite;
@@ -42,6 +43,7 @@ package
 		public static var bulletGroup:AxGroup;
 		public static var debugInfo:AxText;
 		public static var hud:Hud;
+		public static var exhaust:ParticleManager;
 		
 		public function Registry() 
 		{

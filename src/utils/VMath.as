@@ -1,5 +1,7 @@
 package utils 
 {
+	import org.axgl.AxPoint;
+	import org.axgl.AxVector;
 	/**
 	 * ...
 	 * @author x01010111
@@ -23,7 +25,19 @@ package utils
 			return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 		}
 		
+		public static function velocityFromAngle(angle:int, speed:int):AxVector
+		{
+			var a:Number = asRadians(angle);
+			var result:AxVector = new AxVector;
+			result.x = int(Math.cos(a) * speed);
+			result.y = int(Math.sin(a) * speed);
+			return result;
+		}
 		
+		public static function asRadians(angle:Number):Number
+		{
+			return angle * (Math.PI / 180);
+		}
 	}
 
 }
