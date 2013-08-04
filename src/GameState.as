@@ -1,6 +1,7 @@
 package  
 {
 	import entities.Player;
+	import entities.Enemy;
 	import utils.VMath;
 	import org.axgl.*;
 	import org.axgl.render.AxColor;
@@ -23,12 +24,19 @@ package
 			Ax.background = new AxColor(0, 0, 0);
 			
 			//Add Player from Registry
-			Registry.player = new Player()
+			Registry.player = new Player();
 			add(Registry.player);
+			
+			//Populate some test enemies
+			Registry.enemyGroup = new AxGroup();
+			Registry.enemyGroup.add(new Enemy(20, 30));
+			Registry.enemyGroup.add(new Enemy(100, 100));
+			Registry.enemyGroup.add(new Enemy(200, 300));
+			add(Registry.enemyGroup);
 			
 			//Add basic HUD - will prob. need its own Class later
 			_hud = new AxText(Ax.width - 100, Ax.height - 36, null, "Velocity", 100, "left");
-			_hud.alpha = 0.5
+			_hud.alpha = 0.5;
 			add(_hud);
 		}
 		

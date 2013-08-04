@@ -1,11 +1,13 @@
 package  
 {
 	import entities.Player;
+	import org.axgl.AxGroup;
 	/**
 	 * This Registry file is set up for 
 	 * easy embedding of project assets.
 	 * 
 	 * @author	01010111
+	 * @author  mocxd
 	 */
 	
 	public class Registry 
@@ -18,6 +20,7 @@ package
 			 PRT_ - Particles
 		 */
 		[Embed(source = "../assets/graphics/player.png")] public static var SPR_player:Class;
+		[Embed(source = "../assets/graphics/enemy.png")] public static var SPR_enemy:Class;
 		
 		//CSV MAPS - [Embed(source = "../assets/maps/<>.csv", mimeType = "application/octet-stream")] public static var <>:Class;
 		
@@ -29,10 +32,11 @@ package
 		
 		 //VARIABLES - public static var <>:<>;
 		public static var player:Player;
+		public static var enemyGroup:AxGroup;
 		
 		public function Registry() 
 		{
-			
+
 		}
 		
 	}
