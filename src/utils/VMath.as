@@ -19,6 +19,11 @@ package utils
 			return Math.floor(Math.sqrt(Math.pow(VX, 2) + Math.pow(VY, 2)))
 		}
 		
+		public static function distance(x2:Number, x1:Number, y2:Number, y1:Number):Number {
+			return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+		}
+		
+		
 	}
 
 }

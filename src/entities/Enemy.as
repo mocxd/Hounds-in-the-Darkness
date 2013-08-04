@@ -39,13 +39,12 @@ package entities
 			ysize = _ysize;
 			angle -= 90;  // makes it point up
 			
-			acceleration.y = -5  //move it for fun
-			
 		}
 		
 		override public function update():void
 		{
 			screenWrap();
+			fullAttackPlayer();  // example AI state
 			super.update();
 		}
 		
@@ -56,6 +55,43 @@ package entities
 			
 			if (y < 0 - height) y = Ax.height;
 			else if (y > Ax.height + 1) y = 0 - height + 1;
+		}
+		
+		// Attack the player with full power, by turning and facing player, accelerating towards player, and firing weapons
+		public function fullAttackPlayer():void
+		{
+			angle = angleToIntersectPlayer();
+			if (distanceToPlayer() > 150) {
+				accelerateShip(10);
+			} else {
+				stopMoving();
+			}
+			//Registry.debugInfo.text = "Distance: " + distanceToPlayer();
+		}
+		
+		public function accelerateShip(spd:Number):void {
+			acceleration.y = Math.sin(angle * (Math.PI / 180)) * spd;
+			acceleration.x = Math.cos(angle * (Math.PI / 180)) * spd;
+			drag = new AxVector(0, 0);
+		}
+		
+		public function stopMoving():void {
+				acceleration.x = 0;
+				acceleration.y = 0;
+				drag = new AxVector(Math.abs(velocity.x), Math.abs(velocity.y));
+		}
+		
+		public function angleToIntersectPlayer():Number {
+			var _dx:Number, _dy:Number;
+			_dx = Registry.player.x - this.x;
+			_dy = Registry.player.y - this.y;
+			//Registry.debugInfo.text = _dx + ", " + _dy + "\n";
+			//Registry.debugInfo.text += (Math.atan2(_dy,_dx)*(180/Math.PI)).toString();
+			return Math.atan2(_dy,_dx)*(180/Math.PI);
+		}
+		
+		public function distanceToPlayer():Number {
+			return VMath.distance(Registry.player.x, this.x, Registry.player.y, this.y);
 		}
 	}
 
