@@ -21,6 +21,7 @@ package
 		 */
 		[Embed(source = "../assets/graphics/player.png")] public static var SPR_player:Class;
 		[Embed(source = "../assets/graphics/enemy.png")] public static var SPR_enemy:Class;
+		[Embed(source = "../assets/graphics/enemy2.png")] public static var SPR_enemy2:Class;
 		
 		//CSV MAPS - [Embed(source = "../assets/maps/<>.csv", mimeType = "application/octet-stream")] public static var <>:Class;
 		

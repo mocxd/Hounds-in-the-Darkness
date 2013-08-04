@@ -29,9 +29,9 @@ package
 			
 			//Populate some test enemies
 			Registry.enemyGroup = new AxGroup();
-			Registry.enemyGroup.add(new Enemy(20, 30));
-			Registry.enemyGroup.add(new Enemy(100, 100));
-			Registry.enemyGroup.add(new Enemy(200, 300));
+			Registry.enemyGroup.add(new Enemy(20, 30, Enemy.TYPE_A));
+			Registry.enemyGroup.add(new Enemy(100, 100, Enemy.TYPE_A));
+			Registry.enemyGroup.add(new Enemy(200, 300, Enemy.TYPE_B));
 			add(Registry.enemyGroup);
 			
 			//Add basic HUD - will prob. need its own Class later
