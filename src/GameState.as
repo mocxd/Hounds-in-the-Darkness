@@ -1,10 +1,10 @@
 package  
 {
 	import entities.particles.*;
-	import entities.Player;
-	import entities.Enemy;
+	import entities.*;
 	import utils.Hud;
 	import utils.VMath;
+	import utils.CuteDebugText;
 	import org.axgl.*;
 	import org.axgl.render.AxColor;
 	import org.axgl.text.AxText;
@@ -12,6 +12,7 @@ package
 	/**
 	 * ...
 	 * @author x01010111
+	 * @author mocxd
 	 */
 	public class GameState extends AxState
 	{
@@ -25,6 +26,10 @@ package
 			//Background is already Black, but for quick access:
 			Ax.background = new AxColor(0, 0, 0);
 			
+			//Debug info
+			Registry.cuteDebugInfo = new CuteDebugText()
+			add(Registry.cuteDebugInfo);
+			
 			//Adds Exhaust under sprites
 			Registry.exhaust = new ParticleManager(Exhaust, 128);
 			add(Registry.exhaust);
@@ -34,27 +39,22 @@ package
 			add(Registry.player);
 			
 			//Populate some test enemies
-			Registry.enemyGroup = new AxGroup();
-			Registry.enemyGroup.add(new Enemy(20, 30, Enemy.TYPE_A));
-			Registry.enemyGroup.add(new Enemy(100, 100, Enemy.TYPE_A));
-			Registry.enemyGroup.add(new Enemy(200, 300, Enemy.TYPE_B));
-			Registry.enemyGroup.add(new Enemy(200, 200, Enemy.TYPE_A));
-			Registry.enemyGroup.add(new Enemy(500, 100, Enemy.TYPE_B));
-			Registry.enemyGroup.add(new Enemy(100, 700, Enemy.TYPE_A));
-			Registry.enemyGroup.add(new Enemy(200, 800, Enemy.TYPE_B));
-			Registry.enemyGroup.add(new Enemy(100, 300, Enemy.TYPE_A));
-			Registry.enemyGroup.add(new Enemy(300, 100, Enemy.TYPE_B));
-			Registry.enemyGroup.add(new Enemy(600, 100, Enemy.TYPE_A));
-			Registry.enemyGroup.add(new Enemy(700, 300, Enemy.TYPE_B));
-			Registry.enemyGroup.add(new Enemy(100, 600, Enemy.TYPE_A));
-			Registry.enemyGroup.add(new Enemy(200, 500, Enemy.TYPE_B));
+			Registry.enemyGroup = new EnemyManager();
+			addTimer(5, Registry.enemyGroup.addRandomEnemy, 200);
+			/*Registry.enemyGroup.addEnemy(new Enemy(20, 30, Enemy.TYPE_A));
+			Registry.enemyGroup.addEnemy(new Enemy(100, 100, Enemy.TYPE_A));
+			Registry.enemyGroup.addEnemy(new Enemy(200, 300, Enemy.TYPE_B));
+			Registry.enemyGroup.addEnemy(new Enemy(200, 200, Enemy.TYPE_A));
+			Registry.enemyGroup.addEnemy(new Enemy(500, 100, Enemy.TYPE_B));
+			Registry.enemyGroup.addEnemy(new Enemy(100, 700, Enemy.TYPE_A));
+			Registry.enemyGroup.addEnemy(new Enemy(200, 800, Enemy.TYPE_B));
+			Registry.enemyGroup.addEnemy(new Enemy(100, 300, Enemy.TYPE_A));
+			Registry.enemyGroup.addEnemy(new Enemy(300, 100, Enemy.TYPE_B));
+			Registry.enemyGroup.addEnemy(new Enemy(600, 100, Enemy.TYPE_A));
+			Registry.enemyGroup.addEnemy(new Enemy(700, 300, Enemy.TYPE_B));
+			Registry.enemyGroup.addEnemy(new Enemy(100, 600, Enemy.TYPE_A));
+			Registry.enemyGroup.addEnemy(new Enemy(200, 500, Enemy.TYPE_B));*/
 			add(Registry.enemyGroup);
-			
-			//Debug info
-			Registry.debugInfo = new AxText(0, 0, null, "Debug", 200, "left");
-			Registry.debugInfo.alpha = 0.5;
-			Registry.debugInfo.color = new AxColor(1, 0, 0);
-			add(Registry.debugInfo);
 			
 			// HUD
 			Registry.hud = new Hud();

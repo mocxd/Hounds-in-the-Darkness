@@ -12,8 +12,10 @@ package entities
 	{
 		//private var _speed:int = 5;
 		
+		public static const MAX_TYPES:Number = 2;
 		public static const TYPE_A:String = "a";
 		public static const TYPE_B:String = "b";
+		public static const TYPE_DEFAULT:String = "a";
 		protected var xsize:Number;
 		protected var ysize:Number;
 		
@@ -22,6 +24,8 @@ package entities
 			var _sprt:Class;
 			var _xsize:Number;
 			var _ysize:Number;
+			
+			//Registry.cuteDebugInfo.addLine(type);
 			
 			if (type == "a") {
 				_sprt = Registry.SPR_enemy;
@@ -66,7 +70,7 @@ package entities
 			} else {
 				stopMoving();
 			}
-			//Registry.debugInfo.text = "Distance: " + distanceToPlayer();
+			//Registry.cuteDebugInfo.text = "Distance: " + distanceToPlayer();
 		}
 		
 		public function accelerateShip(spd:Number):void {
@@ -85,8 +89,8 @@ package entities
 			var _dx:Number, _dy:Number;
 			_dx = Registry.player.x - this.x;
 			_dy = Registry.player.y - this.y;
-			//Registry.debugInfo.text = _dx + ", " + _dy + "\n";
-			//Registry.debugInfo.text += (Math.atan2(_dy,_dx)*(180/Math.PI)).toString();
+			//Registry.cuteDebugInfo.text = _dx + ", " + _dy + "\n";
+			//Registry.cuteDebugInfo.text += (Math.atan2(_dy,_dx)*(180/Math.PI)).toString();
 			return Math.atan2(_dy,_dx)*(180/Math.PI);
 		}
 		

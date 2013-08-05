@@ -1,10 +1,11 @@
 package  
 {
 	import entities.particles.*;
-	import entities.Player;
+	import entities.*;
 	import org.axgl.AxGroup;
 	import org.axgl.AxSprite;
 	import org.axgl.text.AxText;
+	import utils.CuteDebugText;
 	import utils.Hud;
 	/**
 	 * This Registry file is set up for 
@@ -39,9 +40,10 @@ package
 		
 		 //VARIABLES - public static var <>:<>;
 		public static var player:Player;
-		public static var enemyGroup:AxGroup;
-		public static var bulletGroup:AxGroup;
-		public static var debugInfo:AxText;
+		public static var enemyGroup:EnemyManager;
+		public static var enemyBulletGroup:BulletManager;
+		public static var friendlyBulletGroup:BulletManager;
+		public static var cuteDebugInfo:CuteDebugText;
 		public static var hud:Hud;
 		public static var exhaust:ParticleManager;
 		
