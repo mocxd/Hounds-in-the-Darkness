@@ -27,6 +27,9 @@ package
 			//Background is already Black, but for quick access:
 			Ax.background = new AxColor(0, 0, 0);
 			
+			//Starfield
+			add(new Starfield(200));
+			
 			//Debug info
 			Registry.cuteDebugInfo = new CuteDebugText()
 			add(Registry.cuteDebugInfo);

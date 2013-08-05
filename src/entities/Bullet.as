@@ -11,7 +11,7 @@ package entities
 	public class Bullet extends AxSprite
 	{
 				
-		public function Bullet(_p:AxPoint, _angle:Number, _spd) 
+		public function Bullet(_p:AxPoint, _angle:Number, _spd:Number) 
 		{
 			var _sprt:Class = Registry.SPR_bullet;
 			var _w:int = 3, _h:int = 3;
@@ -31,11 +31,11 @@ package entities
 		
 		public function edgeDie():void
 		{
-			if (x < 0 - width) this.exists = false;
-			else if (x > Ax.width + 1) this.exists = false;
+			if (x < 0 - width) destroy();
+			else if (x > Ax.width + 1) destroy();
 			
-			if (y < 0 - height) this.exists = false;
-			else if (y > Ax.height + 1) this.exists = false;
+			if (y < 0 - height) destroy();
+			else if (y > Ax.height + 1) destroy();
 		}
 		
 	}

@@ -39,6 +39,11 @@ package utils
 		{
 			return angle * (Math.PI / 180);
 		}
+		
+		public static function ranMinMax(MIN:Number, MAX:Number):Number
+		{
+			return MIN + (Math.random()*MAX); 
+		}
 	}
 
 }
