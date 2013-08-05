@@ -20,9 +20,9 @@ package entities
 		
 		override public function update():void
 		{
+			super.update();
 			playerControls();
 			screenWrap();
-			super.update();
 		}
 		
 		public function playerControls():void
