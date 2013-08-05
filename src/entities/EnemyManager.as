@@ -13,7 +13,7 @@ package entities
 			super();
 		}
 		
-		public function addEnemy(_enemy:Enemy) {
+		public function addEnemy(_enemy:Enemy):void {
 			Registry.cuteDebugInfo.addLine("Enemy spawned. (" + (this.members.length+1).toString() + " on screen)");
 			super.add(_enemy);
 		}

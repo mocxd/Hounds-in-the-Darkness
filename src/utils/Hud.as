@@ -21,7 +21,7 @@ package utils
 		
 		public function addBoxes():void
 		{
-			_navBox = new AxSprite(5, 5);
+			_navBox = new AxSprite(Ax.width - 125, 5);
 			_navBox.create(120, 56, 0x50FFFFFF);
 			_navBox.noScroll();
 			add(_navBox);
