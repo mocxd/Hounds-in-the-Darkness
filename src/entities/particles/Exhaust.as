@@ -35,8 +35,8 @@ package entities.particles
 			x = X; 
 			y = Y;
 			velocity = VMath.velocityFromAngle(ANGLE + 180, _speed);
-			velocity.x += Math.random() * 10 - 5 + PARENTVEL.x / 4;
-			velocity.y += Math.random() * 10 - 5 + PARENTVEL.y / 4;
+			velocity.x += Math.random() * 10 - 5 + PARENTVEL.x;
+			velocity.y += Math.random() * 10 - 5 + PARENTVEL.y;
 			animate(_animations[Math.floor(Math.random()*8)], true);
 		}
 		

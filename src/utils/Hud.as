@@ -21,8 +21,9 @@ package utils
 		
 		public function addBoxes():void
 		{
-			_navBox = new AxSprite(Ax.width - 125, 5);
+			_navBox = new AxSprite(5, 5);
 			_navBox.create(120, 56, 0x50FFFFFF);
+			_navBox.noScroll();
 			add(_navBox);
 		}
 		
@@ -30,6 +31,7 @@ package utils
 		{
 			_navText = new AxText(_navBox.x + _padding, _navBox.y + _padding, null, "Velocity", _navBox.width - _padding * 2, "left");
 			_navText.alpha = 0.5;
+			_navText.noScroll();
 			add(_navText);
 		}
 		

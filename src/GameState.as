@@ -9,6 +9,7 @@ package
 	import org.axgl.render.AxColor;
 	import org.axgl.text.AxText;
 	import flash.display.StageDisplayState;
+	import org.axgl.input.*;
 	/**
 	 * ...
 	 * @author x01010111
@@ -59,11 +60,17 @@ package
 			// HUD
 			Registry.hud = new Hud();
 			add(Registry.hud);
+			
+			Ax.camera.follow(Registry.player);
+			Ax.camera.bounds = new AxRect(0, 0, Ax.width, Ax.height);
 		}
 		
 		override public function update():void
 		{
 			super.update();
+			
+			if (Ax.keys.pressed(AxKey.NUMPADPLUS) && Ax.zoom < 10) Ax.zoom += 1;
+			if (Ax.keys.pressed(AxKey.NUMPADMINUS) && Ax.zoom > 1) Ax.zoom -= 1;
 		}
 		
 	}
