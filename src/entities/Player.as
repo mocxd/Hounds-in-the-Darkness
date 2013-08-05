@@ -27,15 +27,15 @@ package entities
 		
 		public function playerControls():void
 		{
-			if (Ax.keys.down(AxKey.LEFT)) angle -= 5;
-			if (Ax.keys.down(AxKey.RIGHT)) angle += 5;
+			if (Ax.keys.down(AxKey.A)) angle -= 5;
+			if (Ax.keys.down(AxKey.D)) angle += 5;
 			
-			if (Ax.keys.down(AxKey.UP)) {
+			if (Ax.keys.down(AxKey.W)) {
 				acceleration.y += Math.sin(angle * (Math.PI / 180)) * _speed;
 				acceleration.x += Math.cos(angle * (Math.PI / 180)) * _speed;
 				drag = new AxVector(0, 0);
 				Registry.exhaust.fireExhaust(new AxPoint(this.x + width / 2, this.y + height / 2), angle, velocity.x, velocity.y);
-			} else if (Ax.keys.down(AxKey.DOWN)) {
+			} else if (Ax.keys.down(AxKey.S)) {
 				acceleration = new AxVector(0, 0);
 				drag = new AxVector(Math.abs(velocity.x), Math.abs(velocity.y));
 			}
