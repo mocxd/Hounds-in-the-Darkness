@@ -39,23 +39,14 @@ package
 			Registry.player = new Player();
 			add(Registry.player);
 			
-			//Populate some test enemies
+			//Adds Enemy Manager, and Populate additional test enemies every 5 seconds
 			Registry.enemyGroup = new EnemyManager();
 			addTimer(5, Registry.enemyGroup.addRandomEnemy, 200);
-			/*Registry.enemyGroup.addEnemy(new Enemy(20, 30, Enemy.TYPE_A));
-			Registry.enemyGroup.addEnemy(new Enemy(100, 100, Enemy.TYPE_A));
-			Registry.enemyGroup.addEnemy(new Enemy(200, 300, Enemy.TYPE_B));
-			Registry.enemyGroup.addEnemy(new Enemy(200, 200, Enemy.TYPE_A));
-			Registry.enemyGroup.addEnemy(new Enemy(500, 100, Enemy.TYPE_B));
-			Registry.enemyGroup.addEnemy(new Enemy(100, 700, Enemy.TYPE_A));
-			Registry.enemyGroup.addEnemy(new Enemy(200, 800, Enemy.TYPE_B));
-			Registry.enemyGroup.addEnemy(new Enemy(100, 300, Enemy.TYPE_A));
-			Registry.enemyGroup.addEnemy(new Enemy(300, 100, Enemy.TYPE_B));
-			Registry.enemyGroup.addEnemy(new Enemy(600, 100, Enemy.TYPE_A));
-			Registry.enemyGroup.addEnemy(new Enemy(700, 300, Enemy.TYPE_B));
-			Registry.enemyGroup.addEnemy(new Enemy(100, 600, Enemy.TYPE_A));
-			Registry.enemyGroup.addEnemy(new Enemy(200, 500, Enemy.TYPE_B));*/
 			add(Registry.enemyGroup);
+			
+			//Adds Enemy's bullet manager
+			Registry.enemyBulletGroup = new BulletManager();
+			add(Registry.enemyBulletGroup);
 			
 			// HUD
 			Registry.hud = new Hud();
@@ -68,6 +59,8 @@ package
 		override public function update():void
 		{
 			super.update();
+			
+			Registry.enemyBulletGroup.gcBullets();
 			
 			if (Ax.keys.pressed(AxKey.NUMPADPLUS) && Ax.zoom < 10) Ax.zoom += 1;
 			if (Ax.keys.pressed(AxKey.NUMPADMINUS) && Ax.zoom > 1) Ax.zoom -= 1;

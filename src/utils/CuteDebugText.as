@@ -10,7 +10,7 @@ package utils
 	public class CuteDebugText extends AxGroup
 	{		
 		
-		public const LINES_MAX:Number = 20;
+		public const LINES_MAX:Number = 50;
 		
 		public function CuteDebugText()
 		{
@@ -25,7 +25,7 @@ package utils
 		
 		public function addLine(_ln:String="----------------------"):void {
 			var _t:AxText;
-			_t = new AxText(0, this.members.length * 15, null, _ln + "\n", 200, "left");
+			_t = new AxText(0, this.members.length * 15, null, _ln + "\n", 640, "left");
 			_t.alpha = 0.75;
 			_t.color = new AxColor(1, 0, 0, _t.alpha);
 			_t.addTimer(2, function ():void {  _t.alpha -= .05; _t.color = new AxColor(1, 0, 0, _t.alpha); if (_t.alpha <= 0.1) { _forceLogScroll(); } }, 15);

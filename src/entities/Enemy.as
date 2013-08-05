@@ -18,6 +18,7 @@ package entities
 		public static const TYPE_DEFAULT:String = "a";
 		protected var xsize:Number;
 		protected var ysize:Number;
+		protected var firing:Boolean;
 		
 		public function Enemy(x:Number, y:Number, type:String) 
 		{
@@ -42,6 +43,7 @@ package entities
 			xsize = _xsize;
 			ysize = _ysize;
 			angle -= 90;  // makes it point up
+			firing = false;
 			
 		}
 		
@@ -69,8 +71,12 @@ package entities
 				accelerateShip(10);
 			} else {
 				stopMoving();
+				if (!firing) {
+					firing = true;
+					addTimer(2, fire, 1);
+				}
 			}
-			//Registry.cuteDebugInfo.text = "Distance: " + distanceToPlayer();
+
 		}
 		
 		public function accelerateShip(spd:Number):void {
@@ -89,13 +95,16 @@ package entities
 			var _dx:Number, _dy:Number;
 			_dx = Registry.player.x - this.x;
 			_dy = Registry.player.y - this.y;
-			//Registry.cuteDebugInfo.text = _dx + ", " + _dy + "\n";
-			//Registry.cuteDebugInfo.text += (Math.atan2(_dy,_dx)*(180/Math.PI)).toString();
 			return Math.atan2(_dy,_dx)*(180/Math.PI);
 		}
 		
 		public function distanceToPlayer():Number {
 			return VMath.distance(Registry.player.x, this.x, Registry.player.y, this.y);
+		}
+		
+		public function fire():void {
+			Registry.enemyBulletGroup.fireAtAngle(new AxPoint(this.x + width / 2, this.y + height / 2), this.angle);
+			firing = false;
 		}
 	}
 
