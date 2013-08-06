@@ -1,5 +1,7 @@
 package utils 
 {
+	import entities.Player;
+	import flash.text.engine.BreakOpportunity;
 	import org.axgl.AxPoint;
 	import org.axgl.AxVector;
 	/**
@@ -38,6 +40,14 @@ package utils
 		public static function asRadians(angle:Number):Number
 		{
 			return angle * (Math.PI / 180);
+		}
+		
+		public static function placeModule(PARENT:Player, MODULE:ModuleOffset):AxPoint
+		{
+			var _x:Number = PARENT.x + PARENT.width / 2;
+			var _y:Number = PARENT.y + PARENT.height / 2;
+			var _a:Number = asRadians(PARENT.angle - MODULE.a);
+			return new AxPoint(_x + MODULE.r * Math.cos(_a), _y + MODULE.r * Math.sin(_a));
 		}
 		
 		public static function ranMinMax(MIN:Number, MAX:Number):Number

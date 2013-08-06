@@ -34,6 +34,7 @@ package entities.particles
 			exists = true;
 			x = X; 
 			y = Y;
+			angle = ANGLE;
 			velocity = VMath.velocityFromAngle(ANGLE + 180, _speed);
 			velocity.x += Math.random() * 10 - 5 + PARENTVEL.x;
 			velocity.y += Math.random() * 10 - 5 + PARENTVEL.y;
