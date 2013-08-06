@@ -18,8 +18,8 @@ package entities
 			super(_p.x, _p.y, _sprt, _w, _h);
 			this.exists = true;
 			angle = _angle;
-			acceleration.y = Math.sin(angle * (Math.PI / 180)) * _spd;
-			acceleration.x = Math.cos(angle * (Math.PI / 180)) * _spd;
+			velocity.y = Math.sin(angle * (Math.PI / 180)) * _spd;
+			velocity.x = Math.cos(angle * (Math.PI / 180)) * _spd;
 			drag = new AxVector(0, 0);
 		}
 		
@@ -31,11 +31,11 @@ package entities
 		
 		public function edgeDie():void
 		{
-			if (x < 0 - width) destroy();
-			else if (x > Ax.width + 1) destroy();
+			if (x < 0 - width) this.exists = false;
+			else if (x > Ax.width + 1) this.exists = false;
 			
-			if (y < 0 - height) destroy();
-			else if (y > Ax.height + 1) destroy();
+			if (y < 0 - height) this.exists = false;
+			else if (y > Ax.height + 1) this.exists = false;
 		}
 		
 	}

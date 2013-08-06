@@ -15,7 +15,7 @@ package entities
 		
 		public function fireAtAngle(_startpoint:AxPoint, _angle:Number):void {
 			Registry.cuteDebugInfo.addLine("Enemy fired! (" + (this.members.length + 1).toString() + " enemy bullets on screen)");
-			super.add(new Bullet(_startpoint, _angle, 300));
+			super.add(new Bullet(_startpoint, _angle, 600));
 		}
 		
 		public function gcBullets():void {

@@ -47,6 +47,8 @@ package
 		public static var hud:Hud;
 		public static var exhaust:ParticleManager;
 		
+		public static var ships1x1:Array = new Array(0, 1, 2, 3, 32, 33, 34, 35, 64, 65, 66, 67, 96, 97, 98, 99);
+		
 		public function Registry() 
 		{
 
