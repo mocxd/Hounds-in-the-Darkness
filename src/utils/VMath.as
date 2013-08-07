@@ -44,8 +44,8 @@ package utils
 		
 		public static function placeModule(PARENT:Player, MODULE:ModuleOffset):AxPoint
 		{
-			var _x:Number = PARENT.x + PARENT.width / 2;
-			var _y:Number = PARENT.y + PARENT.height / 2;
+			var _x:Number = PARENT.x + PARENT.width / 2 - 0.6;
+			var _y:Number = PARENT.y + PARENT.height / 2 - 0.6;
 			var _a:Number = asRadians(PARENT.angle - MODULE.a);
 			return new AxPoint(_x + MODULE.r * Math.cos(_a), _y + MODULE.r * Math.sin(_a));
 		}

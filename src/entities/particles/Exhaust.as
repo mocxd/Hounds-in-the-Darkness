@@ -9,9 +9,10 @@ package entities.particles
 	 */
 	public class Exhaust extends AxSprite
 	{
-		private var _animSpeed:int = 6;
-		private var _speed:int = 50;
+		private var _animSpeed:int = 10;
+		private var _speed:int = 160;
 		private var _animations:Array = new Array("0", "1", "2", "3", "4", "5", "6", "7")
+		private var _size:Number = 3;
 		
 		public function Exhaust() 
 		{
@@ -28,9 +29,10 @@ package entities.particles
 			exists = false;
 		}
 		
-		public function fire(X:int, Y:int , ANGLE:Number, PARENTVEL:AxPoint):void
+		public function fire(X:int, Y:int , ANGLE:Number, PARENTVEL:AxPoint, SIZE:Number = 3):void
 		{
-			scale.x = scale.y = 3;
+			_size = SIZE;
+			scale.x = scale.y = _size;
 			exists = true;
 			x = X; 
 			y = Y;
@@ -48,8 +50,8 @@ package entities.particles
 		
 		override public function update():void
 		{
-			scale.x -= 0.05;
-			scale.y -= 0.05;
+			scale.x -= 0.03 * _size;
+			scale.y -= 0.03 * _size;
 			
 			super.update();
 		}

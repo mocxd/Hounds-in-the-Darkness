@@ -35,7 +35,7 @@ package
 			add(Registry.cuteDebugInfo);
 			
 			//Adds Exhaust under sprites
-			Registry.exhaust = new ParticleManager(Exhaust, 128);
+			Registry.exhaust = new ParticleManager(Exhaust, 70);
 			add(Registry.exhaust);
 			
 			//Add Player from Registry

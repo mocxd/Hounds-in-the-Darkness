@@ -22,27 +22,11 @@ package entities.particles
 			}
 		}
 		
-		public function fireExhaust(POINT:AxPoint, ANGLE:Number, PARENTVELX:int, PARENTVELY:int):void
+		public function fireExhaust(POINT:AxPoint, ANGLE:Number, PARENTVELX:int, PARENTVELY:int, SIZE:int = 3):void
 		{
 			var parentVel:AxPoint = new AxPoint(PARENTVELX, PARENTVELY);
-			
-			if (getFirstAvailable())
-			{
-				particle(getFirstAvailable()).fire(POINT.x, POINT.y, ANGLE, parentVel);
-			}
-		}
-		
-		public function getFirstAvailable(ObjectClass:Class=null):AxEntity
-		{
-			var basic:AxEntity;
-			var i:uint = 0;
-			while(i < members.length)
-			{
-				basic = members[i++] as AxEntity;
-				if((basic != null) && !basic.exists && ((ObjectClass == null) || (basic is ObjectClass)))
-					return basic;
-			}
-			return null;
+			var exhaust:Exhaust = recycle() as Exhaust;
+			if (exhaust != null) exhaust.fire(POINT.x, POINT.y, ANGLE, parentVel, SIZE);
 		}
 	}
 
